@@ -1,13 +1,11 @@
 package web.model;
 
-
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Table;
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Column;
 
 @Entity
 @Table(name = "user")
