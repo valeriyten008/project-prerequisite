@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New User</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Create New User</h2>
+
+    <!-- Форма для создания нового пользователя -->
+    <form th:action="@{/users}" th:object="${user}" method="post">
+
+        <!-- Поле имени пользователя -->
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" th:field="*{firstName}" class="form-control" placeholder="Enter first name" required/>
+        </div>
+
+        <!-- Поле фамилии пользователя -->
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" th:field="*{lastName}" class="form-control" placeholder="Enter last name" required/>
+        </div>
+
+        <!-- Поле email пользователя -->
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" th:field="*{email}" class="form-control" placeholder="Enter email" required/>
+        </div>
+
+        <!-- Кнопка для отправки формы -->
+        <button type="submit" class="btn btn-primary">Create User</button>
+    </form>
+
+    <!-- Кнопка для возврата на список пользователей -->
+    <a href="/users" class="btn btn-secondary mt-3">Back to User List</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
