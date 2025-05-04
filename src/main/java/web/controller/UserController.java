@@ -24,20 +24,20 @@ public class UserController {
     }
 
     @GetMapping
-    public String allUsers(Model model) {
+    public String getAllUsers(Model model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
         return "user/user-list";
     }
 
     @GetMapping("/{id}")
-    public String findUser(@PathVariable("id") Long id, Model model) {
+    public String findUserById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
         return "user/find-person";
     }
 
     @GetMapping("/create")
-    public String newUser(@ModelAttribute("user") User user) {
+    public String createUserForm(@ModelAttribute("user") User user) {
         return "user/user-create";
     }
 
@@ -52,7 +52,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/edit")
+    @GetMapping("/{id}/edit")
     public String editUserForm(@RequestParam("id") Long id, Model model) {
         Optional<User> userById = userService.findById(id);
 
@@ -64,15 +64,10 @@ public class UserController {
         }
     }
 
-    @PostMapping("/edit")
-    public String editUser(@ModelAttribute("user") @Valid User user,
-                           BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "user/edit-user";
-        }
-
-        userService.updateUser(user);
-        return "redirect:/users";
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("person") User user, @PathVariable("id") Long id) {
+        userService.updateUser(id, user);
+        return "redirect:/people";
     }
 
     @PostMapping("/delete")
