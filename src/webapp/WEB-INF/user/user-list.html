@@ -8,7 +8,7 @@
 <body>
 
 <div th:each="user : ${users}">
-    <a th:text="${user.getFirstName()}">user</a>
+    <a th:text="${user.getFirstName() + ', ' + user.getLastName()}">user</a>
 </div>
 
 </body>
