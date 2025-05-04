@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/user")
 public class UserController {
 
     private final UserService userService;
@@ -30,9 +30,8 @@ public class UserController {
         return "user/user-list";
     }
 
-    @GetMapping("/new")
-    public String createUserForm(@ModelAttribute("user") User user) {
-        System.out.println("new user");
+    @GetMapping("/create")
+    public String newPerson(@ModelAttribute("user") User user) {
         return "user/user-create";
     }
 
