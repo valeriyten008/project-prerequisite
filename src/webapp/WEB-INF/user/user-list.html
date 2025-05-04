@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="`http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>All Users</title>
@@ -7,7 +8,7 @@
 <body>
 
 <div th:each="user : ${users}">
-    <a th:text="${person.getName()}">user</a>
+    <a th:text="${user.getFirstName()}">user</a>
 </div>
 
 </body>

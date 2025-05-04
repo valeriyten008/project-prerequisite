@@ -30,8 +30,14 @@ public class UserController {
         return "user/user-list";
     }
 
+    @GetMapping("/{id}")
+    public String findUser(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("user", userService.findById(id));
+        return "user/find-person";
+    }
+
     @GetMapping("/create")
-    public String newPerson(@ModelAttribute("user") User user) {
+    public String newUser(@ModelAttribute("user") User user) {
         return "user/user-create";
     }
 
@@ -54,7 +60,7 @@ public class UserController {
             model.addAttribute("user", userById.get());
             return "user/edit-user";
         } else {
-            return "redirect:/users";
+            return "redirect:/user";
         }
     }
 
