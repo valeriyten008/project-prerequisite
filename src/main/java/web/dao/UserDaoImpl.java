@@ -44,6 +44,7 @@ public class UserDaoImpl implements UserDao {
             userToBeUpdated.setFirstName(updatedUser.getFirstName());
             userToBeUpdated.setLastName(updatedUser.getLastName());
             userToBeUpdated.setEmail(updatedUser.getEmail());
+            entityManager.merge(userToBeUpdated);
         }
     }
 

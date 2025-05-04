@@ -8,7 +8,7 @@
 
 <h2>Create New User</h2>
 
-<form th:method="POST" th:action="@{/people}" th:object="${person}">
+<form th:method="POST" th:action="@{/user}" th:object="${user}">
     <label for="firstName">First Name:</label>
     <input type="text" th:field="*{firstName}" id="firstName"/>
     <br/><br/>

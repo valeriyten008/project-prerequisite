@@ -53,7 +53,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String editUserForm(@RequestParam("id") Long id, Model model) {
+    public String editUserForm(@PathVariable("id") Long id, Model model) {
         Optional<User> userById = userService.findById(id);
 
         if (userById.isPresent()) {
@@ -67,11 +67,11 @@ public class UserController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("person") User user, @PathVariable("id") Long id) {
         userService.updateUser(id, user);
-        return "redirect:/people";
+        return "redirect:/user";
     }
 
-    @PostMapping("/delete")
-    public String deleteUser(@RequestParam("id") Long id) {
+    @PostMapping("/{id}")
+    public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteById(id);
         return "redirect:/users";
     }
