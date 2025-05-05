@@ -18,7 +18,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:db.properties")
+@PropertySource("classpath:db.resources.properties")
 @EnableTransactionManagement
 @ComponentScan("web")
 public class HibernateConfig {
