@@ -27,29 +27,29 @@ public class UserController {
     public String getAllUsers(Model model) {
         List<User> users = userService.findAll();
         model.addAttribute("users", users);
-        return "user/user-list";
+        return "user-list";
     }
 
     @GetMapping("/{id}")
     public String findUserById(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.findById(id));
-        return "user/find-person";
+        return "find-person";
     }
 
     @GetMapping("/create")
     public String createUserForm(@ModelAttribute("user") User user) {
-        return "user/user-create";
+        return "user-create";
     }
 
     @PostMapping
     public String createUser(@ModelAttribute("user") @Valid User user,
                              BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "user/user-create";
+            return "user-create";
         }
 
         userService.save(user);
-        return "redirect:/users";
+        return "redirect:/user";
     }
 
     @GetMapping("/{id}/edit")
@@ -58,14 +58,14 @@ public class UserController {
 
         if (userById.isPresent()) {
             model.addAttribute("user", userById.get());
-            return "user/edit-user";
+            return "edit-user";
         } else {
             return "redirect:/user";
         }
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("person") User user, @PathVariable("id") Long id) {
+    public String update(@ModelAttribute("user") User user, @PathVariable("id") Long id) {
         userService.updateUser(id, user);
         return "redirect:/user";
     }
@@ -73,6 +73,6 @@ public class UserController {
     @PostMapping("/{id}")
     public String deleteUser(@PathVariable("id") Long id) {
         userService.deleteById(id);
-        return "redirect:/users";
+        return "redirect:/user";
     }
 }
